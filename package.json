@@ -26,7 +26,8 @@
               "config": {
                   "repository": {
                       "owner": "sukhsung",
-                      "name" : "vasco-app"
+                      "name" : "vasco-app",
+                      "draft": true
                   }
               }
           }
