@@ -1,9 +1,9 @@
 {
   "name": "vasco-app",
   "productName": "vasco-app",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "description": "Ronchigram Simulator",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -45,7 +45,8 @@
     }
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "v8-compile-cache": "^2.3.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
