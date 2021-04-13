@@ -20,6 +20,17 @@
   "config": {
     "forge": {
       "packagerConfig": {},
+      "publishers": [
+          {
+              "name": "@electron-forge/publisher-github",
+              "config": {
+                  "repository": {
+                      "owner": "sukhsung",
+                      "name" : "vasco-app"
+                  }
+              }
+          }
+      ],
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -54,6 +65,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/publisher-github": "^6.0.0-beta.54",
     "electron": "12.0.4"
   }
 }
