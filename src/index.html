@@ -1,12 +1,208 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+    <title>Vasco</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';" />
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+    <div class="float-container">
+        <div class="float-child leftPanel">
+            <h1>Settings</h1>
+            <div id="aberrations">
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>10</sub>:
+                        <input type="text" id="C10" value="0" size="4" onchange="calculate()"> &#197;
+                    </div>
+                    <span class="tooltiptext">Defocus, C1</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>12</sub>:
+                        <input type="text" id="C12" value="-.849" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>12</sub>:
+                        <input type="text" id="P12" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">2-fold Astigmatism, A1</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>21</sub>:
+                        <input type="text" id="C21" value="1.38" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>21</sub>:
+                        <input type="text" id="P21" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">Axial Coma, B2</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>23</sub>:
+                        <input type="text" id="C23" value="1.59" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>23</sub>:
+                        <input type="text" id="P23" value="35" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">3-fold Astigmatism, A2</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>30</sub>:
+                        <input type="text" id="C30" value="235" size="4" onchange="calculate()"> nm
+                    </div>
+                    <span class="tooltiptext">3rd Order Spherical, C3</span>
+                </div>
+
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>32</sub>:
+                        <input type="text" id="C32" value="-118" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>32</sub>:
+                        <input type="text" id="P32" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">3rd Order Axial Star, S3</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>34</sub>:
+                        <input type="text" id="C34" value="65.1" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>34</sub>:
+                        <input type="text" id="P34" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">4-fold Astigmatism, A3</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>41</sub>:
+                        <input type="text" id="C41" value="2.23" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>41</sub>:
+                        <input type="text" id="P41" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">4th Order Axial Coma, B4</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>43</sub>:
+                        <input type="text" id="C43" value="-6.13" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>43</sub>:
+                        <input type="text" id="P43" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">3-Lobe Aberration, D4</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>45</sub>:
+                        <input type="text" id="C45" value="-7.44" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>45</sub>:
+                        <input type="text" id="P45" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">5-fold Astigmatism, A4</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>50</sub>:
+                        <input type="text" id="C50" value="-0.201" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <span class="tooltiptext">5th Order Spherical, C5</span>
+                </div>
+
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>52</sub>:
+                        <input type="text" id="C52" value="0.131" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>52</sub>:
+                        <input type="text" id="P52" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">5th Order Axial Star, S5</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>54</sub>:
+                        <input type="text" id="C54" value="-0.001" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>54</sub>:
+                        <input type="text" id="P54" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">5th Order Rossette, R5</span>
+                </div>
+        
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        C<sub>56</sub>:
+                        <input type="text" id="C56" value="-.223" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
+                        &Phi;<sub>56</sub>:
+                        <input type="text" id="P56" value="0" size="4" onchange="calculate()"> &deg;
+                    </div>
+                    <span class="tooltiptext">6-fold Astigmatism, A5</span>
+                </div>
+        
+            </div>
+        </div>
+        <div class="float-child rightPanel">
+            <div class="im_rapper">
+                <div id="can1div">
+                    <h1>Ronchigram</h1>
+                    <canvas id="canvas1" class="im"> </canvas>
+                </div>
+                <div id="can2div">
+                    <h1>&pi;/4 Phase Limit</h1>
+                    <canvas id="canvas2" class="im"> </canvas>
+                </div>
+            </div>
+
+            <div id="eq">
+                &chi;(&alpha;,&Phi;) = &Sigma;<sub>n,m</sub>[ C<sub>n,m</sub> &alpha;
+                <sup>n+1</sup>cos(m(&Phi;-&Phi;<sub>n,m</sub>))/(n+1) ]
+            </div>
+
+            <div id="settings">
+                <div>
+                    <p><span style="color: #FF0000;font-size: 1em;">&#9675;</span> Objective Aperture Semiangle = <input
+                            type="text" id="aperture" onchange="energyUI()" size="3" value="95"> mrad &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color: #0000FF;font-size: 1em">&#9675;</span> π/4 Aperture Semiangle = <input type="text"
+                            id="alpha_max" size="4" disabled class="disable"> mrad</p>
+                </div>
+                <div>
+                    <input type="checkbox" id="draw_overlay" checked>Show image overlays</input>
+                </div>
+                <br>
+                <div>
+                    Step-sizes: 
+                    Defocus: <button onclick="changeStepSize('c10',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c10',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    2-fold: <button onclick="changeStepSize('c12',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c12',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    Coma: <button onclick="changeStepSize('c21',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c21',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+
+
+        
+
+        </div>
+    </div>
+
+ 
+    <div class="footer">
+        &nbsp;
+        <br>
+        <p>By Suk Hyun Sung & Noah Schnitzer @ <a href="http://hovdenlab.com">Hovden lab</a></p>
+        <p>Check out the source on <a href="https://github.com/sukhsung/vasco-app/">GitHub</a></p>
+    </div>
+
+    <!-- <script type="text/javascript" src="./math.min.js"></script> -->
+    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./math.min.js"></script>
+    <script type="text/javascript" src="./ronch_calc.js"></script>
+
+
+</body>
 </html>
