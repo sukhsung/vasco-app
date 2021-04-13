@@ -1,7 +1,7 @@
 {
   "name": "vasco-app",
   "productName": "vasco-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ronchigram Simulator",
   "main": "src/main.js",
   "scripts": {
@@ -21,16 +21,16 @@
     "forge": {
       "packagerConfig": {},
       "publishers": [
-          {
-              "name": "@electron-forge/publisher-github",
-              "config": {
-                  "repository": {
-                      "owner": "sukhsung",
-                      "name" : "vasco-app",
-                      "draft": true
-                  }
-              }
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "sukhsung",
+              "name": "vasco-app",
+              "draft": true
+            }
           }
+        }
       ],
       "makers": [
         {
