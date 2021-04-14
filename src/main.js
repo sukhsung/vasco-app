@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require("electron");
 const path = require("path");
 require("v8-compile-cache");
 
+if (require('electron-squirrel-startup')) return app.quit();
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 1200,
