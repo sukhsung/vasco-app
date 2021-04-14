@@ -5,6 +5,10 @@
     font-size: large;
 }
 
+body {
+    margin:0;
+}
+
 h1 {
     font-size: 1.7em;
 }
@@ -21,34 +25,29 @@ h2 input {
     font-size: 1em;
 }
 
-body {
-    margin: 0;
+
+.main-container {
+    display:flex;
 }
 
-.leftPanel {
+.main-child {
+    height: 100vh;
+}
+
+.main-leftPanel{
     background-color: #444444;
-    width: 25vw;
-    height: 100vh;
-    float: left;
-    margin: 0;
-    border: 0;
+    order: 0;
+    flex-grow: 1;
 }
 
-.rightPanel {
+.main-rightPanel{
     background-color: #222222;
-    width: 75vw;
-    height: 100vh;
-    margin: 0;
-    border: 0;
-    float: right;
+    order: 1;
+    flex-grow: 3;
 }
 
-.float-child.leftPanel {
-    margin-right: 0px;
-}
-
-.im_rapper {
-    padding-top: 1px;
+.im-container {
+    display:flex;
 }
 .im {
     width: 33vw;
@@ -56,10 +55,14 @@ body {
 }
 
 #can1div {
-    float: left;
-    padding-left: 2.5vw;
-    padding-right: 2.5vw;
+    order: 0;
+    flex-grow: 1;
 }
+#can2div {
+    order: 1;
+    flex-grow: 1;
+}
+
 
 #settings {
     padding-top: 0px;
@@ -87,7 +90,6 @@ button {
     border-radius: 4px;
     font-style: italic;
     font-weight: bold;
-    box-shadow: 0 6px #444444;
     border: none;
 }
 

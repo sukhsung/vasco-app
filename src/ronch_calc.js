@@ -96,12 +96,6 @@ function getAberrations() {
     return abers;
 }
 
-function randButton() {
-    //document.getElementById('loading').innerHTML = "Calculating..."
-    setTimeout(function () {
-        randomize();
-    }, 0);
-}
 
 function getObjAperture() {
     let obj_ap_r = Number(document.getElementById("aperture").value) * mrad;
@@ -244,7 +238,7 @@ function initialize() {
 function randomize() {
     for (let it = 0; it < aberrations.length; it++) {
         let aberration = aberrations[it];
-        aberration.mag_el.value = Math.round(Math.random() * 100);
+        aberration.mag_el.value = Math.round(Math.random() * 50);
         if (aberration.arg_el) {
             aberration.arg_el.value = Math.round(Math.random() * 180);
         }

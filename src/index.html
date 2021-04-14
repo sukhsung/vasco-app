@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
-    <div class="float-container">
-        <div class="float-child leftPanel">
+    <div class="main-container">
+        <div class="main-child main-leftPanel">
             <h1>Settings</h1>
             <div id="aberrations">
         
@@ -145,11 +145,15 @@
                     </div>
                     <span class="tooltiptext">6-fold Astigmatism, A5</span>
                 </div>
+                <br>
+                <div>
+                    <button class="red" onclick="randomize()">Randomize!</button>
+                </div>
         
             </div>
         </div>
-        <div class="float-child rightPanel">
-            <div class="im_rapper">
+        <div class="main-child main-rightPanel">
+            <div class="im-container">
                 <div id="can1div">
                     <h1>Ronchigram</h1>
                     <canvas id="canvas1" class="im"> </canvas>
@@ -164,7 +168,6 @@
                 &chi;(&alpha;,&Phi;) = &Sigma;<sub>n,m</sub>[ C<sub>n,m</sub> &alpha;
                 <sup>n+1</sup>cos(m(&Phi;-&Phi;<sub>n,m</sub>))/(n+1) ]
             </div>
-
             <div id="settings">
                 <div>
                     <p><span style="color: #FF0000;font-size: 1em;">&#9675;</span> Objective Aperture Semiangle = <input
@@ -173,9 +176,8 @@
                             id="alpha_max" size="4" disabled class="disable"> mrad</p>
                 </div>
                 <div>
-                    <input type="checkbox" id="draw_overlay" checked>Show image overlays</input>
+                    <p><input type="checkbox" id="draw_overlay" checked>Show image overlays</input></p>
                 </div>
-                <br>
                 <div>
                     Step-sizes: 
                     Defocus: <button onclick="changeStepSize('c10',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c10',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -192,8 +194,6 @@
 
  
     <div class="footer">
-        &nbsp;
-        <br>
         <p>By Suk Hyun Sung & Noah Schnitzer @ <a href="http://hovdenlab.com">Hovden lab</a></p>
         <p>Check out the source on <a href="https://github.com/sukhsung/vasco-app/">GitHub</a></p>
     </div>

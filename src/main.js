@@ -4,10 +4,10 @@ require("v8-compile-cache");
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 1100,
+        width: 1200,
         height: 700,
         webPreferences: {
-            preload: path.join(__dirname, "src/preload.js"),
+            preload: path.join(__dirname, "preload.js"),
         },
     });
 
