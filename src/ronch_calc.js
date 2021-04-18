@@ -306,6 +306,10 @@ var ctx1 = canvas1.getContext("2d");
 var canvas2 = document.getElementById("canvas2");
 var ctx2 = canvas2.getContext("2d");
 
+
+var current_selected_ab = 1;
+var current_step_size = 1.0;
+
 var steps = {}
 steps.C10 = 10
 steps.C12 = 1
@@ -352,6 +356,151 @@ for (var it = 0; it < aberration_list.length; it++) {
     aberrations.push(ab_obj);
 }
 
+
+// new control scheme
+// up/down arrow are defocus
+// left/right arrow are step size
+// wasd are current aberration magnitudes
+// q/e are next, prev aberration
+
+window.addEventListener(
+    "keydown",
+    function (event) {
+        if (event.defaultPrevented) {
+            return; // Do nothing if the event was already processed
+        }
+        //current_selected_ab is current ab index
+        //current_step_size is global step size...
+
+        switch (event.key) {
+            case "ArrowDown":
+                aberrations[0].mag_el.value =
+                    Number(aberrations[0].mag_el.value) - current_step_size;
+                calculate();
+                break;
+            case "ArrowUp":
+                aberrations[0].mag_el.value =
+                    Number(aberrations[0].mag_el.value) + current_step_size;
+                calculate();
+                break;
+            case "w":
+                if(aberrations[current_selected_ab].n==0)
+                {
+                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) + current_step_size;
+                }
+                else{
+                    sx =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+                    sy =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+
+                    sy += current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
+                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                }
+                calculate();
+                break;
+            case "s":
+                if(aberrations[current_selected_ab].n==0)
+                {
+                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) - current_step_size;
+                }
+                else{                
+                    sx =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+                    sy =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+
+                    sy -= current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
+                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                }
+                calculate();
+                break;
+            case "a":
+                if(aberrations[current_selected_ab].n==0)
+                {
+                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) - current_step_size;
+                }
+                else{                
+
+                    sx =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+                    sy =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+
+                    sx -= current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
+                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                }
+                calculate();
+                break;
+            case "d":
+                if(aberrations[current_selected_ab].n==0)
+                {
+                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) + current_step_size;
+                }
+                else{                
+
+                    sx =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+                    sy =
+                        Number(aberrations[current_selected_ab].mag_el.value) *
+                        math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
+
+                    sx += current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
+                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                }
+                calculate();
+                break;
+            case "q":
+                if (current_selected_ab == 1)
+                {
+                    current_selected_ab = aberrations.length-1;
+                } 
+                else
+                {
+                    current_selected_ab = current_selected_ab - 1;
+                }
+                
+                //calculate();
+                break;
+            case "e":
+                if (current_selected_ab == aberrations.length-1)
+                {
+                    current_selected_ab = 1;
+                } 
+                else
+                {
+                    current_selected_ab = current_selected_ab + 1;
+                }                
+                //calculate();
+                break;
+            case "ArrowLeft":
+                current_step_size = current_step_size / 10;
+                break;
+            case "ArrowRight":
+                current_step_size = current_step_size * 10;
+            default:
+                return; // Quit when this doesn't handle the key event.
+        }
+        event.preventDefault();
+    },
+    true
+);
+
+
+// original control scheme
+
+/*
 window.addEventListener(
     "keydown",
     function (event) {
@@ -483,5 +632,8 @@ window.addEventListener(
     },
     true
 );
+*/
+
+
 
 initialize();
