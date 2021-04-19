@@ -133,6 +133,10 @@ button:active {
     height: 1em;
 }
 
+.aber_sel {
+    background-color: #222222;
+}
+
 .aber {
     width: 65%;
     float: center;

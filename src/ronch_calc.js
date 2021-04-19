@@ -462,6 +462,10 @@ window.addEventListener(
                 calculate();
                 break;
             case "q":
+                //console.log(cur_el.className)
+
+                var cur_el = document.getElementById("C"+aberrations[current_selected_ab].m+aberrations[current_selected_ab].n).parentElement;
+                cur_el.className = 'aber';
                 if (current_selected_ab == 1)
                 {
                     current_selected_ab = aberrations.length-1;
@@ -470,10 +474,14 @@ window.addEventListener(
                 {
                     current_selected_ab = current_selected_ab - 1;
                 }
+                var next_el = document.getElementById("C"+aberrations[current_selected_ab].m+aberrations[current_selected_ab].n).parentElement;
+                next_el.className = 'aber aber_sel'
                 
                 //calculate();
                 break;
             case "e":
+                var cur_el = document.getElementById("C"+aberrations[current_selected_ab].m+aberrations[current_selected_ab].n).parentElement;
+                cur_el.className = 'aber';
                 if (current_selected_ab == aberrations.length-1)
                 {
                     current_selected_ab = 1;
@@ -481,7 +489,10 @@ window.addEventListener(
                 else
                 {
                     current_selected_ab = current_selected_ab + 1;
-                }                
+                }      
+                var next_el = document.getElementById("C"+aberrations[current_selected_ab].m+aberrations[current_selected_ab].n).parentElement;
+                next_el.className = 'aber aber_sel'
+          
                 //calculate();
                 break;
             case "ArrowLeft":
