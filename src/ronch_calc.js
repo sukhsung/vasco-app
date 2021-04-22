@@ -107,6 +107,20 @@ function getObjAperture() {
     return obj_ap_r;
 }
 
+function polar_to_cart(mag,angle)
+{
+    let x = Math.cos(angle)*mag;
+    let y = Math.sin(angle)*mag;
+    return [x,y];
+}
+
+function cart_to_polar(x,y)
+{
+    let mag = Math.sqrt(x*x+y*y);
+    let angle = math.atan2(x, y);
+    return [mag,angle];
+}
+
 
 function drawEverything(
     out_ronch,
@@ -146,8 +160,30 @@ function calculateWASM(Module) {
 
     // getting aberrations into tidy arrays of magnitude, angle. degree, order  are assumed based on order in C++ section, units are baked in!
     let abers = getAberrations();
+    let hidden_abers = hidden_aberrations;
+
     let ab_mags = abers[0];
     let ab_angles = abers[1];
+
+    if(ab_cor_mode == true)
+    {
+        let hidden_mags = hidden_abers[0];
+        let hidden_angles = hidden_abers[1];
+        for(let it = 0; it < abers[2]; it++)
+        {
+
+            let hx = hidden_mags[it]*Math.cos(hidden_angles[it]);
+            let hy = hidden_mags[it]*Math.sin(hidden_angles[it]);
+
+            let ax = ab_mags[it]*Math.cos(ab_angles[it]) - hx;
+            let ay = ab_mags[it]*Math.sin(ab_angles[it]) - hy;
+
+            ab_mags[it] = Math.sqrt(ax*ax+ay*ay);
+            ab_angles[it] = Math.atan2(ay,ax);
+        }
+    }
+    
+
     globalTest = 250;
     let params = [numPx, al_max, obj_ap_r, scalefactor, keV];
     const arrayDataToPass = params.concat(ab_mags, ab_angles);
@@ -246,6 +282,15 @@ function randomize() {
     calculate();
 }
 
+function start_ab_training(){
+    randomize();
+    ab_cor_mode = true;
+    hidden_aberrations = getAberrations();
+    console.log(hidden_aberrations)
+
+    allZero();
+}
+
 function allZero() {
     for (let it = 0; it < aberrations.length; it++) {
         let aberration = aberrations[it];
@@ -291,6 +336,13 @@ function setC(c_in) {
     }
 }
 
+
+
+
+
+
+
+
 var pm = math.pow(10, -12);
 var ang = math.pow(10, -10);
 var nm = math.pow(10, -9);
@@ -333,6 +385,9 @@ var aberration_list = [
     "C56",
 ];
 var aberrations = [];
+
+var hidden_aberrations = [];
+var ab_cor_mode = false;
 
 for (var it = 0; it < aberration_list.length; it++) {
     var ab_name = aberration_list[it];
