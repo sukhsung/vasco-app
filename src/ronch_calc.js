@@ -271,8 +271,12 @@ function initialize() {
     calculate();
 }
 
-function randomize() {
-    for (let it = 0; it < aberrations.length; it++) {
+function randomize(terms = -1) {
+    if(terms==-1)
+    {
+        terms = number_aberration_terms;
+    }
+    for (let it = 0; it < terms; it++) {
         let aberration = aberrations[it];
         aberration.mag_el.value = Math.round(Math.random() * 50);
         if (aberration.arg_el) {
@@ -283,7 +287,10 @@ function randomize() {
 }
 
 function start_ab_training(){
-    randomize();
+    //allZero();
+
+    var max_order = Number(document.getElementById('correct_terms').value);
+    randomize(max_order);
     ab_cor_mode = true;
     hidden_aberrations = getAberrations();
     console.log(hidden_aberrations)
@@ -336,6 +343,33 @@ function setC(c_in) {
     }
 }
 
+function notationChange(selectObject){
+    let value = selectObject.value;  
+    //console.log(value);
+    if(value==="h")
+    {
+        Array.from(document.querySelectorAll('.kriv_not')).forEach(function(el) { 
+            el.classList.add('nodisp');
+            el.classList.remove('yesdisp');
+        });
+        Array.from(document.querySelectorAll('.haid_not')).forEach(function(el) { 
+            el.classList.add('yesdisp');
+            el.classList.remove('nodisp');
+        });
+    }
+    else
+    {
+        Array.from(document.querySelectorAll('.haid_not')).forEach(function(el) { 
+            el.classList.add('nodisp');
+            el.classList.remove('yesdisp');
+        });
+        Array.from(document.querySelectorAll('.kriv_not')).forEach(function(el) { 
+            el.classList.add('yesdisp');
+            el.classList.remove('nodisp');
+        });
+    }
+}
+
 
 
 
@@ -384,6 +418,8 @@ var aberration_list = [
     "C54",
     "C56",
 ];
+
+var number_aberration_terms = aberration_list.length;
 var aberrations = [];
 
 var hidden_aberrations = [];

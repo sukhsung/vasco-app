@@ -5,6 +5,10 @@
     font-size: large;
 }
 
+select {
+    color:#000000;
+}
+
 body {
     margin:0;
 }
@@ -29,11 +33,12 @@ h2 input {
 .main-container {
     display:flex;
 }
-
+/* remove to fix footer display in browser... necessary for electron?*/
+/*
 .main-child {
-    height: 100vh;
+    height: 100vh; 
 }
-
+*/
 .main-leftPanel{
     background-color: #444444;
     order: 0;
@@ -142,6 +147,8 @@ button:active {
     float: center;
     display: inline;
     font-size: 1em;
+    padding: 10px;
+
 }
 .aber sub {
     font-size: 0.8em;
@@ -188,3 +195,17 @@ input {
     margin: 0;
     background: #111111;
 }
+
+.kriv_not {
+}
+
+.haid_not {
+}
+
+.nodisp{
+    display: none;
+}
+.yesdisp{
+    display: inline;
+}
+

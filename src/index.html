@@ -9,12 +9,13 @@
 <body>
     <div class="main-container">
         <div class="main-child main-leftPanel">
-            <h1>Settings</h1>
+            <h1 style="margin-bottom: 0">Aberrations</h1>
             <div id="aberrations">
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>10</sub>:
+                        <span class="kriv_not yesdisp">C<sub>10</sub>:</span>
+                        <span class="haid_not nodisp">C<sub>1</sub>:</span>
                         <input type="text" id="C10" value="0" size="4" onchange="calculate()"> &#197;
                     </div>
                     <span class="tooltiptext">Defocus, C1</span>
@@ -22,9 +23,11 @@
         
                 <div class="aber_wrapper ">
                     <div class="aber aber_sel">
-                        C<sub>12</sub>:
+                        <span class="kriv_not yesdisp">C<sub>12</sub>:</span>
+                        <span class="haid_not nodisp">A<sub>1</sub>:</span>
                         <input type="text" id="C12" value="-.849" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>12</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>12</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>A1</sub>:</span>
                         <input type="text" id="P12" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">2-fold Astigmatism, A1</span>
@@ -32,9 +35,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>21</sub>:
+                        <span class="kriv_not yesdisp">C<sub>21</sub>:</span>
+                        <span class="haid_not nodisp">B<sub>2</sub>:</span>
                         <input type="text" id="C21" value="1.38" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>21</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>21</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>B2</sub>:</span>
                         <input type="text" id="P21" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">Axial Coma, B2</span>
@@ -42,9 +47,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>23</sub>:
+                        <span class="kriv_not yesdisp">C<sub>23</sub>:</span>
+                        <span class="haid_not nodisp">A<sub>2</sub>:</span>
                         <input type="text" id="C23" value="1.59" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>23</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>23</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>A2</sub>:</span>
                         <input type="text" id="P23" value="35" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">3-fold Astigmatism, A2</span>
@@ -52,7 +59,8 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>30</sub>:
+                        <span class="kriv_not yesdisp">C<sub>30</sub>:</span>
+                        <span class="haid_not nodisp">C<sub>3</sub>:</span>
                         <input type="text" id="C30" value="235" size="4" onchange="calculate()"> nm
                     </div>
                     <span class="tooltiptext">3rd Order Spherical, C3</span>
@@ -60,9 +68,11 @@
 
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>32</sub>:
+                        <span class="kriv_not yesdisp">C<sub>32</sub>:</span>
+                        <span class="haid_not nodisp">S<sub>3</sub>:</span>
                         <input type="text" id="C32" value="-118" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>32</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>32</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>S3</sub>:</span>
                         <input type="text" id="P32" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">3rd Order Axial Star, S3</span>
@@ -70,9 +80,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>34</sub>:
+                        <span class="kriv_not yesdisp">C<sub>34</sub>:</span>
+                        <span class="haid_not nodisp">A<sub>3</sub>:</span>
                         <input type="text" id="C34" value="65.1" size="4" onchange="calculate()"> nm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>34</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>34</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>A3</sub>:</span>
                         <input type="text" id="P34" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">4-fold Astigmatism, A3</span>
@@ -80,9 +92,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>41</sub>:
+                        <span class="kriv_not yesdisp">C<sub>41</sub>:</span>
+                        <span class="haid_not nodisp">B<sub>4</sub>:</span>
                         <input type="text" id="C41" value="2.23" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>41</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>41</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>B4</sub>:</span>
                         <input type="text" id="P41" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">4th Order Axial Coma, B4</span>
@@ -90,9 +104,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>43</sub>:
+                        <span class="kriv_not yesdisp">C<sub>43</sub>:</span>
+                        <span class="haid_not nodisp">D<sub>4</sub>:</span>
                         <input type="text" id="C43" value="-6.13" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>43</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>43</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>D4</sub>:</span>
                         <input type="text" id="P43" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">3-Lobe Aberration, D4</span>
@@ -100,9 +116,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>45</sub>:
+                        <span class="kriv_not yesdisp">C<sub>45</sub>:</span>
+                        <span class="haid_not nodisp">A<sub>4</sub>:</span>
                         <input type="text" id="C45" value="-7.44" size="4" onchange="calculate()"> &mu;m &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>45</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>45</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>A4</sub>:</span>
                         <input type="text" id="P45" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">5-fold Astigmatism, A4</span>
@@ -110,7 +128,8 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>50</sub>:
+                        <span class="kriv_not yesdisp">C<sub>50</sub>:</span>
+                        <span class="haid_not nodisp">C<sub>5</sub>:</span>
                         <input type="text" id="C50" value="-0.201" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <span class="tooltiptext">5th Order Spherical, C5</span>
@@ -118,9 +137,11 @@
 
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>52</sub>:
+                        <span class="kriv_not yesdisp">C<sub>52</sub>:</span>
+                        <span class="haid_not nodisp">S<sub>5</sub>:</span>
                         <input type="text" id="C52" value="0.131" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>52</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>52</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>S5</sub>:</span>
                         <input type="text" id="P52" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">5th Order Axial Star, S5</span>
@@ -128,9 +149,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>54</sub>:
+                        <span class="kriv_not yesdisp">C<sub>54</sub>:</span>
+                        <span class="haid_not nodisp">R<sub>5</sub>:</span>
                         <input type="text" id="C54" value="-0.001" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>54</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>54</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>R5</sub>:</span>
                         <input type="text" id="P54" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">5th Order Rossette, R5</span>
@@ -138,9 +161,11 @@
         
                 <div class="aber_wrapper">
                     <div class="aber">
-                        C<sub>56</sub>:
+                        <span class="kriv_not yesdisp">C<sub>56</sub>:</span>
+                        <span class="haid_not nodisp">A<sub>5</sub>:</span>
                         <input type="text" id="C56" value="-.223" size="4" onchange="calculate()"> mm &nbsp;&nbsp;&nbsp;&nbsp;
-                        &Phi;<sub>56</sub>:
+                        <span class="kriv_not yesdisp">&Phi;<sub>56</sub>:</span>
+                        <span class="haid_not nodisp">&Phi;<sub>A5</sub>:</span>
                         <input type="text" id="P56" value="0" size="4" onchange="calculate()"> &deg;
                     </div>
                     <span class="tooltiptext">6-fold Astigmatism, A5</span>
@@ -148,6 +173,9 @@
                 <br>
                 <div>
                     <button class="red" onclick="randomize()">Randomize!</button>
+                    <button class="red" onclick="allZero()">Zero all</button>
+                </div>
+                <div style="padding-top: 10px">
                     <button class="red" onclick="start_ab_training()">Correction training</button>
                 </div>
         
@@ -163,6 +191,7 @@
                     <h1>&pi;/4 Phase Limit</h1>
                     <canvas id="canvas2" class="im"> </canvas>
                 </div>
+
             </div>
 
             <div id="eq">
@@ -177,14 +206,16 @@
                             id="alpha_max" size="4" disabled class="disable"> mrad</p>
                 </div>
                 <div>
-                    <p><input type="checkbox" id="draw_overlay" checked>Show image overlays</input></p>
+                    <h3 > Settings </h3>
+                    <p><input type="checkbox" id="draw_overlay" checked>Show image overlays</input> | Corretion training terms: <input type="text" id="correct_terms" size=3 value="3"> | Aberration Notation: <select onchange="notationChange(this)"><option value="k">Krivanek</option><option value="h">Haider</option></select></p>
                 </div>
-                <div>
+                <!--- <div>
                     Step-sizes: 
                     Defocus: <button onclick="changeStepSize('c10',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c10',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
                     2-fold: <button onclick="changeStepSize('c12',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c12',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
                     Coma: <button onclick="changeStepSize('c21',true)" class="blue">&#9650;</button> <button onclick="changeStepSize('c21',false)" class="blue">&#9660;</button> &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
+                --->
             </div>
 
 
