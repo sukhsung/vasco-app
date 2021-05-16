@@ -135,6 +135,7 @@
                     <span class="tooltiptext">5th Order Spherical, C5</span>
                 </div>
 
+
                 <div class="aber_wrapper">
                     <div class="aber">
                         <span class="kriv_not yesdisp">C<sub>52</sub>:</span>
@@ -170,6 +171,15 @@
                     </div>
                     <span class="tooltiptext">6-fold Astigmatism, A5</span>
                 </div>
+                <div class="aber_wrapper">
+                    <div class="aber">
+                        Step Size: 10^
+                        <input type="text" id="set_step" value="0" size="4" onchange="changeStepSize()">  &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <span class="tooltiptext">5th Order Spherical, C5</span>
+                </div>
+
+
                 <br>
                 <div>
                     <button class="red" onclick="randomize()">Randomize!</button>
@@ -206,8 +216,17 @@
                             id="alpha_max" size="4" disabled class="disable"> mrad</p>
                 </div>
                 <div>
+                    <h3> Controls </h3>
+                    Arrow keys: &#8593; &#8595; Defocus , &#8594; &#8592; Step size
+                    <br>
+                    WASD: Selected aberration (horizontal and vertical components)
+                    <br>
+                    Q,E: Select next/previous aberration
+                    
+                </div>
+                <div>
                     <h3 > Settings </h3>
-                    <p><input type="checkbox" id="draw_overlay" checked>Show image overlays</input> | Corretion training terms: <input type="text" id="correct_terms" size=3 value="3"> | Aberration Notation: <select onchange="notationChange(this)"><option value="k">Krivanek</option><option value="h">Haider</option></select></p>
+                    <p><input type="checkbox" id="draw_overlay" checked>Show image overlays</input> | Correction training terms: <input type="text" id="correct_terms" size=3 value="3"> | Aberration Notation: <select onchange="notationChange(this)"><option value="k">Krivanek</option><option value="h">Haider</option></select></p>
                 </div>
                 <!--- <div>
                     Step-sizes: 

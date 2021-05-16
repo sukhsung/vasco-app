@@ -96,6 +96,17 @@ function getAberrations() {
     return abers;
 }
 
+function energyUI()
+{
+let obj_ap_r = Number(document.getElementById("aperture").value) * mrad;
+
+    if (obj_ap_r < 0) {
+        obj_ap_r = 0;
+        document.getElementById("aperture").value = 0;
+    }
+    calculate();
+}
+
 
 function getObjAperture() {
     let obj_ap_r = Number(document.getElementById("aperture").value) * mrad;
@@ -245,6 +256,21 @@ function calculateWASM(Module) {
             result / Float32Array.BYTES_PER_ELEMENT + 2 * (numPx * numPx)
         ];
 
+    if(ab_cor_mode == true)
+    {
+        if( rmax > corr_threshold)
+        {
+            let time = + new Date();
+            time = (time - corr_start_time)/1000;
+            let score = corr_max_order/time*1000;
+            alert(+corr_threshold + " mrad reached in "+time+", score: "+score)
+            //console.log("success")
+
+            corr_threshold = 1e9;
+
+        }
+    }
+
     drawEverything(
         out_ronch,
         out_phase_map,
@@ -289,11 +315,13 @@ function randomize(terms = -1) {
 function start_ab_training(){
     //allZero();
 
-    var max_order = Number(document.getElementById('correct_terms').value);
-    randomize(max_order);
+    corr_max_order = Number(document.getElementById('correct_terms').value);
+    randomize(corr_max_order);
     ab_cor_mode = true;
     hidden_aberrations = getAberrations();
     console.log(hidden_aberrations)
+    corr_start_time = + new Date();
+    corr_threshold = 20;
 
     allZero();
 }
@@ -308,6 +336,14 @@ function allZero() {
     }
 }
 
+
+function changeStepSize()
+{
+    current_step_size = 10^(Number(document.getElementById('set_step').value));
+}
+    
+
+/*
 function changeStepSize(C,UPDN) {
     console.log(C)
     if (C=='c10') {
@@ -332,7 +368,7 @@ function changeStepSize(C,UPDN) {
         }
     }
 }
-
+*/
 
 function setC(c_in) {
     for (let it = 0; it < aberrations.length; it++) {
@@ -394,7 +430,7 @@ var ctx2 = canvas2.getContext("2d");
 
 
 var current_selected_ab = 1;
-var current_step_size = 1.0;
+var current_step_size = 1;
 
 var steps = {}
 steps.C10 = 10
@@ -420,10 +456,15 @@ var aberration_list = [
 ];
 
 var number_aberration_terms = aberration_list.length;
+
 var aberrations = [];
 
 var hidden_aberrations = [];
 var ab_cor_mode = false;
+var corr_start_time = 0;
+var corr_threshold = 0;
+var corr_max_order = 0;
+
 
 for (var it = 0; it < aberration_list.length; it++) {
     var ab_name = aberration_list[it];
@@ -588,9 +629,11 @@ window.addEventListener(
                 break;
             case "ArrowLeft":
                 current_step_size = current_step_size / 10;
+                document.getElementById('set_step').value = Math.log10(current_step_size);
                 break;
             case "ArrowRight":
                 current_step_size = current_step_size * 10;
+                document.getElementById('set_step').value = Math.log10(current_step_size);
             default:
                 return; // Quit when this doesn't handle the key event.
         }
