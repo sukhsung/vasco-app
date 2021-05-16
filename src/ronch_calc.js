@@ -308,6 +308,7 @@ function randomize(terms = -1) {
         if (aberration.arg_el) {
             aberration.arg_el.value = Math.round(Math.random() * 180);
         }
+        //console.log(aberration);
     }
     calculate();
 }
@@ -324,6 +325,12 @@ function start_ab_training(){
     corr_threshold = 20;
 
     allZero();
+}
+
+function zeroBtn()
+{
+    allZero();
+    calculate();
 }
 
 function allZero() {
