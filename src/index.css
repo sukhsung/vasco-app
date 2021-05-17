@@ -33,12 +33,11 @@ h2 input {
 .main-container {
     display:flex;
 }
-/* remove to fix footer display in browser... necessary for electron?*/
-/*
+
 .main-child {
-    height: 100vh; 
+    height: 95vh; 
 }
-*/
+
 .main-leftPanel{
     background-color: #444444;
     order: 0;
