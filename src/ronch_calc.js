@@ -149,11 +149,12 @@ function drawEverything(
     canvas2.width = numPx;
     canvas2.height = numPx;
     drawGrayscaleBitmap2(ctx1, out_ronch, numPx);
-    drawGrayscaleBitmap2(ctx2, out_phase_map, numPx);
-    if (draw_overlay) {
-        drawOverlays(ctx1, ctx2, numPx, al_max, disp_size_mrad, obj_ap_r, rmax);
+    if (ab_cor_hard == 'easy') {
+        drawGrayscaleBitmap2(ctx2, out_phase_map, numPx);
+        if (draw_overlay) {
+            drawOverlays(ctx1, ctx2, numPx, al_max, disp_size_mrad, obj_ap_r, rmax);
+        }
     }
-
     document.getElementById("alpha_max").value = math.round(rmax, 2);
 }
 
@@ -263,11 +264,13 @@ function calculateWASM(Module) {
             let time = + new Date();
             time = (time - corr_start_time)/1000;
             let score = corr_max_order/time*1000;
-            alert(+corr_threshold + " mrad reached in "+time+", score: "+score)
+            score = Math.round( score*100 )/100;
+            alert(+corr_threshold + " mrad reached in "+time+" seconds, score: "+score)
             //console.log("success")
 
             corr_threshold = 1e9;
-
+            ab_cor_mode == false;
+            ab_cor_hard == false;
         }
     }
 
@@ -313,12 +316,13 @@ function randomize(terms = -1) {
     calculate();
 }
 
-function start_ab_training(){
+function start_ab_training( hardness ){
     //allZero();
 
     corr_max_order = Number(document.getElementById('correct_terms').value);
     randomize(corr_max_order);
     ab_cor_mode = true;
+    ab_cor_hard = hardness;
     hidden_aberrations = getAberrations();
     console.log(hidden_aberrations)
     corr_start_time = + new Date();
@@ -468,6 +472,7 @@ var aberrations = [];
 
 var hidden_aberrations = [];
 var ab_cor_mode = false;
+var ab_cor_hard = 'easy';
 var corr_start_time = 0;
 var corr_threshold = 0;
 var corr_max_order = 0;

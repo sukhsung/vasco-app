@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <complex>
 #include <time.h>
+#include <random>
 #include "kiss_fftnd.h"
 using namespace std;
 extern "C" {
@@ -61,10 +62,12 @@ int polarMeshnOapp(float* rr, float* pp, float* oapp, float r_max, float obj_ap_
 }
 
 float* noisyGrating(int dimX, int dimY) {
-    srand(time(NULL));
+    // srand(time(NULL));
+    srandom(time(NULL));
     float* vals = new float[dimX * dimY];
     for (int i = 0; i < dimX * dimY; i++) {
-        vals[i] = rand() / float(RAND_MAX);
+        //vals[i] = rand() / float(RAND_MAX);
+        vals[i] = random();
     }
     return vals;
 }
