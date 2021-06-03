@@ -1,6 +1,6 @@
 {
   "name": "vasco-app",
-  "productName": "vasco-app",
+  "productName": "Vasco",
   "version": "0.5.0",
   "description": "Ronchigram Simulator",
   "main": "src/main.js",

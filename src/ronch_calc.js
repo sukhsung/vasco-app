@@ -307,7 +307,14 @@ function randomize(terms = -1) {
     }
     for (let it = 0; it < terms; it++) {
         let aberration = aberrations[it];
-        aberration.mag_el.value = Math.round(Math.random() * 50);
+        let randVal = 30
+        if (ab_cor_mode) {
+            randVal = 10
+        }
+        if (it > terms) {
+            randVal = 1
+        }
+        aberration.mag_el.value = Math.round(Math.random() * randVal);
         if (aberration.arg_el) {
             aberration.arg_el.value = Math.round(Math.random() * 180);
         }
@@ -485,7 +492,8 @@ for (var it = 0; it < aberration_list.length; it++) {
     ab_obj.n = Number(ab_name[2]);
     ab_obj.mag_el = document.getElementById(ab_name);
     if (ab_obj.m == 1 && ab_obj.n == 0) {
-        ab_obj.mag_unit = ang;
+        //ab_obj.mag_unit = ang;
+        ab_obj.mag_unit = nm;
     } else if (ab_obj.m < 4) {
         ab_obj.mag_unit = nm;
     } else if (ab_obj.m < 5) {
