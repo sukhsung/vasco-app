@@ -426,11 +426,6 @@ function notationChange(selectObject){
 
 
 
-
-
-
-
-
 var pm = math.pow(10, -12);
 var ang = math.pow(10, -10);
 var nm = math.pow(10, -9);
@@ -440,6 +435,7 @@ var mrad = math.pow(10, -3);
 var PI = math.pi;
 var deg = PI / 180;
 var correction_factor = 1;
+
 
 var canvas1 = document.getElementById("canvas1");
 var ctx1 = canvas1.getContext("2d");
@@ -483,6 +479,7 @@ var ab_cor_hard = 'easy';
 var corr_start_time = 0;
 var corr_threshold = 0;
 var corr_max_order = 0;
+
 
 
 for (var it = 0; it < aberration_list.length; it++) {
@@ -648,12 +645,13 @@ window.addEventListener(
                 //calculate();
                 break;
             case "ArrowLeft":
-                current_step_size = current_step_size / 10;
-                document.getElementById('set_step').value = Math.log10(current_step_size);
+                current_step_size = current_step_size / 2;
+                //document.getElementById('set_step').value = Math.log10(current_step_size);
+                document.getElementById("stepsize").innerHTML = "Step Size: "+current_step_size;
                 break;
             case "ArrowRight":
-                current_step_size = current_step_size * 10;
-                document.getElementById('set_step').value = Math.log10(current_step_size);
+                current_step_size = current_step_size * 2;
+                document.getElementById("stepsize").innerHTML = "Step Size: "+current_step_size;
             default:
                 return; // Quit when this doesn't handle the key event.
         }
