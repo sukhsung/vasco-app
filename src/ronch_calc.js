@@ -521,21 +521,24 @@ window.addEventListener(
         //current_selected_ab is current ab index
         //current_step_size is global step size...
 
+        //math.round( , rval);
+        let rval = 3;
+
         switch (event.key) {
             case "ArrowDown":
                 aberrations[0].mag_el.value =
-                    Number(aberrations[0].mag_el.value) - current_step_size;
+                    math.round(Number(aberrations[0].mag_el.value) - current_step_size, rval);
                 calculate();
                 break;
             case "ArrowUp":
                 aberrations[0].mag_el.value =
-                    Number(aberrations[0].mag_el.value) + current_step_size;
+                    math.round(Number(aberrations[0].mag_el.value) + current_step_size, rval);
                 calculate();
                 break;
             case "w":
                 if(aberrations[current_selected_ab].n==0)
                 {
-                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) + current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.round(Number(aberrations[current_selected_ab].mag_el.value) + current_step_size,rval);
                 }
                 else{
                     sx =
@@ -546,17 +549,17 @@ window.addEventListener(
                         math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
 
                     sy += current_step_size;
-                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
-                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                    aberrations[current_selected_ab].mag_el.value = math.round(math.sqrt(sx * sx + sy * sy),rval);
+                    aberrations[current_selected_ab].arg_el.value = math.round(math.atan2(sy, sx) / deg,rval);
                 }
                 calculate();
                 break;
             case "s":
                 if(aberrations[current_selected_ab].n==0)
                 {
-                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) - current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.round(Number(aberrations[current_selected_ab].mag_el.value) + current_step_size,rval);
                 }
-                else{                
+                else{
                     sx =
                         Number(aberrations[current_selected_ab].mag_el.value) *
                         math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
@@ -565,18 +568,17 @@ window.addEventListener(
                         math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
 
                     sy -= current_step_size;
-                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
-                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                    aberrations[current_selected_ab].mag_el.value = math.round(math.sqrt(sx * sx + sy * sy),rval);
+                    aberrations[current_selected_ab].arg_el.value = math.round(math.atan2(sy, sx) / deg,rval);
                 }
                 calculate();
                 break;
             case "a":
                 if(aberrations[current_selected_ab].n==0)
                 {
-                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) - current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.round(Number(aberrations[current_selected_ab].mag_el.value) + current_step_size,rval);
                 }
-                else{                
-
+                else{
                     sx =
                         Number(aberrations[current_selected_ab].mag_el.value) *
                         math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
@@ -585,18 +587,17 @@ window.addEventListener(
                         math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
 
                     sx -= current_step_size;
-                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
-                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                    aberrations[current_selected_ab].mag_el.value = math.round(math.sqrt(sx * sx + sy * sy),rval);
+                    aberrations[current_selected_ab].arg_el.value = math.round(math.atan2(sy, sx) / deg,rval);
                 }
                 calculate();
                 break;
             case "d":
                 if(aberrations[current_selected_ab].n==0)
                 {
-                    aberrations[current_selected_ab].mag_el.value = Number(aberrations[current_selected_ab].mag_el.value) + current_step_size;
+                    aberrations[current_selected_ab].mag_el.value = math.round(Number(aberrations[current_selected_ab].mag_el.value) + current_step_size,rval);
                 }
-                else{                
-
+                else{
                     sx =
                         Number(aberrations[current_selected_ab].mag_el.value) *
                         math.cos(Number(aberrations[current_selected_ab].arg_el.value) * deg);
@@ -605,8 +606,8 @@ window.addEventListener(
                         math.sin(Number(aberrations[current_selected_ab].arg_el.value) * deg);
 
                     sx += current_step_size;
-                    aberrations[current_selected_ab].mag_el.value = math.sqrt(sx * sx + sy * sy);
-                    aberrations[current_selected_ab].arg_el.value = math.atan2(sy, sx) / deg;
+                    aberrations[current_selected_ab].mag_el.value = math.round(math.sqrt(sx * sx + sy * sy),rval);
+                    aberrations[current_selected_ab].arg_el.value = math.round(math.atan2(sy, sx) / deg,rval);
                 }
                 calculate();
                 break;
